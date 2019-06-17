@@ -1,12 +1,14 @@
+import 'babel-polyfill'
 import React from 'react'
 import { hydrate } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import Routes from './Routes'
+import store from './store'
+import App from './components/App'
 
 hydrate(
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )

@@ -1,8 +1,8 @@
 const path = require('path')
 
-const baseConfig = require('./webpack.base')
+const withBaseConfig = require('./webpack.base')
 
-module.exports = baseConfig({
+module.exports = withBaseConfig({
   entry: './src/client/index.js',
   output: {
     filename: 'bundle.js',

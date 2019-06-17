@@ -1,9 +1,9 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
-const baseConfig = require('./webpack.base')
+const withBaseConfig = require('./webpack.base')
 
-module.exports = baseConfig({
+module.exports = withBaseConfig({
   target: 'node',
   entry: './src/index.js',
   output: {
