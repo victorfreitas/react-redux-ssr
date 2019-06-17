@@ -18,7 +18,7 @@ export const listRoutes = [
       },
       {
         ...UsersListPage,
-        path: '/users',
+        path: '/users/:slug',
         exact: true,
       },
       {
