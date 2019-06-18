@@ -1,26 +1,27 @@
 const merge = require('webpack-merge')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+const isProd = process.env.NODE_ENV === 'production'
 const baseConfig = {
+  mode: isProd ? 'production' : 'development',
+  devtool: isProd ? false : 'cheap-module-source-map',
   module: {
+    strictExportPresence: true,
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: [
-            'react',
-            'stage-0',
-            ['env', {
-              targets: {
-                browsers: ['last 2 versions'],
-              },
-            }],
-          ],
-        },
+        use: 'babel-loader',
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.css', '.scss', '.json'],
+  },
+  watch: !isProd,
 }
 
 module.exports = config => merge(baseConfig, config)

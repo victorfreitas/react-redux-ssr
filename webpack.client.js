@@ -3,9 +3,12 @@ const path = require('path')
 const withBaseConfig = require('./webpack.base')
 
 module.exports = withBaseConfig({
-  entry: './src/client/index.js',
+  entry: ['@babel/polyfill', './src/client'],
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+  },
+  performance: {
+    hints: false,
   },
 })
