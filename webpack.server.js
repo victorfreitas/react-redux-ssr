@@ -6,7 +6,10 @@ const withBaseConfig = require('./webpack.base')
 module.exports = withBaseConfig({
   target: 'node',
   devtool: false,
-  entry: ['@babel/polyfill', './src'],
+  entry: [
+    'regenerator-runtime/runtime',
+    './src/index.js'
+  ],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'server'),

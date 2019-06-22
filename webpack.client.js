@@ -3,7 +3,10 @@ const path = require('path')
 const withBaseConfig = require('./webpack.base')
 
 module.exports = withBaseConfig({
-  entry: ['@babel/polyfill', './src/client'],
+  entry: [
+    'regenerator-runtime/runtime',
+    './src/client'
+  ],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
