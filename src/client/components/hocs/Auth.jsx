@@ -21,7 +21,7 @@ const Auth = ({ auth, ChildComponent }) => {
 }
 
 Auth.propTypes = {
-  auth: PropTypes.shape().isRequired,
+  auth: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
   ChildComponent: PropTypes.shape().isRequired,
 }
 

@@ -37,7 +37,7 @@ const Header = ({ auth }) => {
 }
 
 Header.propTypes = {
-  auth: PropTypes.shape().isRequired,
+  auth: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 }
 
 const mapStateToProps = ({ auth }) => ({
