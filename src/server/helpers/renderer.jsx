@@ -30,6 +30,7 @@ export default (req, store, context) => {
       <body>
         <div id="root">${content}</div>
         <script>window.INITIAL_STATE = ${serialize(store.getState())};</script>
+        <script src="/static/vendor.js"></script>
         <script src="/static/bundle.js"></script>
       </body>
     </html>

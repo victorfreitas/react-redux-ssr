@@ -7,8 +7,14 @@ module.exports = withBaseConfig({
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
+    chunkFilename: 'vendor.js',
   },
   performance: {
     hints: false,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 })

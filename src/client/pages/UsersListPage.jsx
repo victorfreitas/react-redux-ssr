@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { fetchUsers } from '../actions'
+import { fetchUsers as fetchUsersAction } from '../actions'
 
 class UsersListPage extends PureComponent {
   componentWillMount() {
@@ -23,7 +24,9 @@ class UsersListPage extends PureComponent {
   render() {
     return (
       <div>
-        <h2>Users List</h2>
+        <h2>
+          Users List
+        </h2>
         <ul>
           {this.renderUsers()}
         </ul>
@@ -32,15 +35,20 @@ class UsersListPage extends PureComponent {
   }
 }
 
+UsersListPage.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  fetchUsers: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = ({ users }) => ({
   users,
 })
 
 const mapDispatchToProps = {
-  fetchUsers,
+  fetchUsers: fetchUsersAction,
 }
 
 export default {
   component: connect(mapStateToProps, mapDispatchToProps)(UsersListPage),
-  loadData: ({ dispatch }) => dispatch(fetchUsers()),
+  loadData: ({ dispatch }) => dispatch(fetchUsersAction()),
 }

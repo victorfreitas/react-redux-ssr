@@ -8,8 +8,8 @@ module.exports = withBaseConfig({
   devtool: false,
   entry: ['@babel/polyfill', './src'],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'server'),
   },
   externals: [nodeExternals()],
 })

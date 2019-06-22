@@ -14,8 +14,8 @@ export default (req) => {
   })
 
   axiosInstance.interceptors.response.use(
-    (response) => response,
-    (error) => Promise.resolve({ error, ...error.response })
+    response => response,
+    error => Promise.resolve({ error, ...error.response })
   )
 
   return createStore(

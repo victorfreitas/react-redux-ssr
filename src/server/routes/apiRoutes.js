@@ -8,9 +8,11 @@ const proxyArgs = [
   env('API_BASE_URL'),
   {
     proxyReqOptDecorator(opts) {
-      opts.headers['x-forwarded-host'] = 'localhost:3000'
+      const { headers } = opts
 
-      return opts
+      headers['x-forwarded-host'] = 'localhost:3000'
+
+      return { ...opts, headers }
     },
   },
 ]

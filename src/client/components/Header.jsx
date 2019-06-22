@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -33,6 +34,10 @@ const Header = ({ auth }) => {
       </div>
     </nav>
   )
+}
+
+Header.propTypes = {
+  auth: PropTypes.shape().isRequired,
 }
 
 const mapStateToProps = ({ auth }) => ({

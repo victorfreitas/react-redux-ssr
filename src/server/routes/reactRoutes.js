@@ -6,6 +6,7 @@ import renderer from '../helpers/renderer'
 
 const router = express.Router()
 
+// eslint-disable-next-line consistent-return
 router.get('*', async (req, res) => {
   const store = createStore(req)
   const { promises, is404 } = processRoutes(req.path, store)

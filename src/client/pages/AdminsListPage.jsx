@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { fetchAdmins } from '../actions'
+import { fetchAdmins as fetchAdminsAction } from '../actions'
 
 class AdminsListPage extends PureComponent {
   componentWillMount() {
@@ -29,13 +30,23 @@ class AdminsListPage extends PureComponent {
           Protected list of admins
         </h3>
         <ul>
-          {!responseError
+          {!responseError.data
             ? this.renderAdmins()
-            : <li>{responseError.data.error}</li>}
+            : (
+              <li>
+                {responseError.data.error}
+              </li>
+            )}
         </ul>
       </div>
     )
   }
+}
+
+AdminsListPage.propTypes = {
+  admins: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  responseError: PropTypes.shape().isRequired,
+  fetchAdmins: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({ admins, responseError }) => ({
@@ -44,10 +55,10 @@ const mapStateToProps = ({ admins, responseError }) => ({
 })
 
 const mapDispatchToProps = {
-  fetchAdmins,
+  fetchAdmins: fetchAdminsAction,
 }
 
 export default {
   component: connect(mapStateToProps, mapDispatchToProps)(AdminsListPage),
-  loadData: ({ dispatch }) => dispatch(fetchAdmins()),
+  loadData: ({ dispatch }) => dispatch(fetchAdminsAction()),
 }

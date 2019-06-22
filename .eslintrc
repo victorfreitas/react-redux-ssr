@@ -1,0 +1,21 @@
+{
+  "extends": ["react-app", "airbnb"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "react/jsx-one-expression-per-line": ["error", "aways"],
+    "import/no-unresolved": {
+      "alias": true
+    },
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }]
+  }
+}

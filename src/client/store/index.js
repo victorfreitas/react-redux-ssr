@@ -9,8 +9,8 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => Promise.resolve({ error, ...error.response })
+  response => response,
+  error => Promise.resolve({ error, ...error.response })
 )
 
 export default createStore(

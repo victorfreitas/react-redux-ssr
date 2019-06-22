@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -8,14 +9,23 @@ const Auth = ({ auth, ChildComponent }) => {
       return <Redirect to="/" />
 
     case null:
-      return <div>Loading...</div>
+      return (
+        <div>
+          Loading...
+        </div>
+      )
 
     default:
       return <ChildComponent />
   }
 }
 
-export default ChildComponent => {
+Auth.propTypes = {
+  auth: PropTypes.shape().isRequired,
+  ChildComponent: PropTypes.shape().isRequired,
+}
+
+export default (ChildComponent) => {
   const mapStateToProps = ({ auth }) => ({
     auth,
     ChildComponent,
