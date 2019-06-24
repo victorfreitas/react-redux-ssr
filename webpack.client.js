@@ -3,6 +3,7 @@ const path = require('path')
 const withBaseConfig = require('./webpack.base')
 
 module.exports = withBaseConfig({
+  target: 'web',
   entry: [
     'regenerator-runtime/runtime',
     './src/client'

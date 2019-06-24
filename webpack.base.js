@@ -1,5 +1,14 @@
 const merge = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+
+const plugins = [new CleanWebpackPlugin()]
+
+const getBrowserSyncPlugin = () => new BrowserSyncPlugin({
+  host: 'localhost',
+  port: 3001,
+  proxy: 'localhost:3000',
+})
 
 const isProd = process.env.NODE_ENV === 'production'
 const baseConfig = {
@@ -15,13 +24,17 @@ const baseConfig = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
+  plugins,
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss', '.json'],
   },
   watch: !isProd,
 }
 
-module.exports = config => merge(baseConfig, config)
+module.exports = (config) => {
+  if (config.target === 'web') {
+    baseConfig.plugins.push(getBrowserSyncPlugin())
+  }
+
+  return merge(baseConfig, config)
+}

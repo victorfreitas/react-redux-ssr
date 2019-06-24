@@ -1,9 +1,10 @@
 import { renderRoutes } from 'react-router-config'
 
-import Page from '../pages/Page'
+import paths from './paths'
+import Page from '../containers/pages/Page'
 import HomePage from '../pages/HomePage'
-import UsersListPage from '../pages/UsersListPage'
-import AdminsListPage from '../pages/AdminsListPage'
+import UsersListPage from '../containers/pages/UsersListPage'
+import AdminsListPage from '../containers/pages/AdminsListPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import requireAuth from '../components/hocs/requireAuth'
 
@@ -13,18 +14,18 @@ export const listRoutes = [
     routes: [
       {
         ...HomePage,
-        path: '/',
+        path: paths.home,
         exact: true,
       },
       {
         ...UsersListPage,
-        path: '/users',
+        path: paths.users,
         exact: true,
       },
       {
         ...AdminsListPage,
         component: requireAuth(AdminsListPage.component),
-        path: '/admins',
+        path: paths.admins,
         exact: true,
       },
       {

@@ -4,7 +4,6 @@ import { renderRoutes } from 'react-router-config'
 import { Helmet } from 'react-helmet'
 
 import Header from '../components/Header'
-import { fetchCurrentUser } from '../actions'
 
 const Page = ({ route, location }) => (
   <Fragment>
@@ -15,7 +14,7 @@ const Page = ({ route, location }) => (
       <meta charSet="utf-8" />
       <meta name="description" content="Home page component" />
       <meta property="og:title" content="Homepage" />
-      <link rel="canonical" href="/" />
+      <link rel="canonical" href={location.pathname} />
     </Helmet>
     <Header />
     {renderRoutes(route.routes)}
@@ -27,7 +26,4 @@ Page.propTypes = {
   location: PropTypes.shape().isRequired,
 }
 
-export default {
-  component: Page,
-  loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
-}
+export default Page

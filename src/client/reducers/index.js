@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux'
 
-import usersReducer from './usersReducer'
-import adminsReducer from './adminsReducer'
-import authReducer from './authReducer'
-import responseErrorReducer from './responseErrorReducer'
+import users from './users'
+import admins from './admins'
+import auth from './auth'
+import currentUser from './currentUser'
+import responseError from './responseError'
 
 export default combineReducers({
-  users: usersReducer,
-  admins: adminsReducer,
-  auth: authReducer,
-  responseError: responseErrorReducer,
+  users,
+  admins,
+  auth,
+  responseError,
+  currentUser,
 })
