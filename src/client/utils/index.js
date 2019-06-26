@@ -1,4 +1,4 @@
-import paths from '../Routes/paths'
+import paths from '../routes/paths'
 
 export const isAuthenticate = auth => auth
 

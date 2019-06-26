@@ -1,6 +1,6 @@
 import { matchRoutes } from 'react-router-config'
 
-import { listRoutes } from '../../client/Routes/RoutesConfig'
+import { listRoutes } from '../../client/routes/RoutesConfig'
 import getPromises from './getPromises'
 import is404 from './is404'
 

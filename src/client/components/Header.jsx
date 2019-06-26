@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import paths from '../Routes/paths'
+import paths from '../routes/paths'
 import AuthLink from '../containers/AuthLink'
 
 const Header = () => (
