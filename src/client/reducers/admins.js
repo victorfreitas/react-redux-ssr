@@ -1,4 +1,4 @@
-import { FETCH_ADMINS } from '../actions/types'
+import { FETCH_ADMINS } from '../action-types'
 
 export default (state = [], action) => {
   switch (action.type) {

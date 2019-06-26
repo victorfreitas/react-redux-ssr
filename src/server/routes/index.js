@@ -5,7 +5,7 @@ import reactRoutes from './reactRoutes'
 
 const router = express.Router()
 
-router.use('/static', express.static('public'))
+router.use('/static', express.static('dist/public'))
 router.use(apiRoutes)
 router.use(reactRoutes)
 

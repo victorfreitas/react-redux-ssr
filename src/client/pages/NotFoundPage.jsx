@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-const NotFoundPage = () => (
-  <div>
-    <h1>
-      Ooops, route not found!
-    </h1>
-  </div>
-)
+const NotFoundPage = ({ dispatchSeo, seoMock }) => {
+  useEffect(() => {
+    dispatchSeo(seoMock)
+  }, [])
 
-export default {
-  component: NotFoundPage,
-  notFound: true,
+  return (
+    <div>
+      <h1>
+        Ooops, route not found!
+      </h1>
+    </div>
+  )
 }
+
+NotFoundPage.propTypes = {
+  dispatchSeo: PropTypes.func.isRequired,
+  seoMock: PropTypes.shape().isRequired,
+}
+
+export default NotFoundPage

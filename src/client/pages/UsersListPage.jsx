@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 
 class UsersListPage extends PureComponent {
   componentWillMount() {
-    const { fetchUsers } = this.props
+    const { dispatchSeo, seoMock, requestUsers } = this.props
 
-    fetchUsers()
+    dispatchSeo(seoMock)
+    requestUsers()
   }
 
   renderUsers() {
@@ -34,7 +35,9 @@ class UsersListPage extends PureComponent {
 
 UsersListPage.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  fetchUsers: PropTypes.func.isRequired,
+  requestUsers: PropTypes.func.isRequired,
+  dispatchSeo: PropTypes.func.isRequired,
+  seoMock: PropTypes.shape().isRequired,
 }
 
 export default UsersListPage

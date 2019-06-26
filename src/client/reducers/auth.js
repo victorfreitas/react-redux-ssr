@@ -1,6 +1,6 @@
-import { FETCH_CURRENT_USER } from '../actions/types'
+import { FETCH_CURRENT_USER } from '../action-types'
 
-export default (state = null, action) => {
+export default (state = 0, action) => {
   switch (action.type) {
     case FETCH_CURRENT_USER:
       return action.payload.data || false

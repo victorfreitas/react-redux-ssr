@@ -11,7 +11,10 @@
     "import/order": [
       "error",
       {
-        "groups": ["external", "internal"],
+        "groups": [
+          ["builtin", "external"],
+          ["internal"]
+        ],
         "newlines-between": "always"
       }
     ],

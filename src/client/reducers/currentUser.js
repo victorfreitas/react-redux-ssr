@@ -1,4 +1,4 @@
-import { FETCH_CURRENT_USER } from '../actions/types'
+import { FETCH_CURRENT_USER } from '../action-types'
 
 export default (state = {}, action) => {
   switch (action.type) {

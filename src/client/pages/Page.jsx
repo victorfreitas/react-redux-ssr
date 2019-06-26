@@ -5,15 +5,15 @@ import { Helmet } from 'react-helmet'
 
 import Header from '../components/Header'
 
-const Page = ({ route, location }) => (
+const Page = ({ seo, route, location }) => (
   <Fragment>
     <Helmet>
       <title>
-        {`${location.pathname} | Page`}
+        {`${seo.title} | React SSR`}
       </title>
       <meta charSet="utf-8" />
-      <meta name="description" content="Home page component" />
-      <meta property="og:title" content="Homepage" />
+      <meta name="description" content={seo.description} />
+      <meta property="og:title" content={seo.title} />
       <link rel="canonical" href={location.pathname} />
     </Helmet>
     <Header />
@@ -24,6 +24,7 @@ const Page = ({ route, location }) => (
 Page.propTypes = {
   route: PropTypes.shape().isRequired,
   location: PropTypes.shape().isRequired,
+  seo: PropTypes.shape().isRequired,
 }
 
 export default Page

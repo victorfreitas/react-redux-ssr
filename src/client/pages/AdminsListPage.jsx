@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 
 class AdminsListPage extends PureComponent {
   componentWillMount() {
-    const { fetchAdmins } = this.props
+    const { dispatchSeo, seoMock, requestAdmins } = this.props
 
-    fetchAdmins()
+    dispatchSeo(seoMock)
+    requestAdmins()
   }
 
   renderList() {
@@ -43,7 +44,9 @@ class AdminsListPage extends PureComponent {
 AdminsListPage.propTypes = {
   admins: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   responseError: PropTypes.shape().isRequired,
-  fetchAdmins: PropTypes.func.isRequired,
+  seoMock: PropTypes.shape().isRequired,
+  dispatchSeo: PropTypes.func.isRequired,
+  requestAdmins: PropTypes.func.isRequired,
 }
 
 export default AdminsListPage

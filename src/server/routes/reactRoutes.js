@@ -2,7 +2,7 @@ import express from 'express'
 
 import createStore from '../helpers/createStore'
 import processRoutes from '../helpers/processRoutes'
-import renderer from '../helpers/renderer'
+import templateRoot from '../views/templateRoot'
 
 const router = express.Router()
 
@@ -14,7 +14,7 @@ router.get('*', async (req, res) => {
   await Promise.all(promises)
 
   const context = {}
-  const content = renderer(req, store, context)
+  const content = templateRoot(req, store, context)
 
   if (context.url) {
     return res.redirect(301, context.url)

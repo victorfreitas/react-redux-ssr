@@ -1,17 +1,28 @@
 import { connect } from 'react-redux'
 
-import { fetchUsers } from '../../actions'
+import { requestUsers, dispatchSeo } from '../../actions'
 import UsersListPage from '../../pages/UsersListPage'
+
+const seoMock = {
+  title: 'Users',
+  description: 'Users list',
+}
 
 const mapStateToProps = ({ users }) => ({
   users,
+  seoMock,
 })
 
 const mapDispatchToProps = {
-  fetchUsers,
+  requestUsers,
+  dispatchSeo,
 }
 
 export default {
   component: connect(mapStateToProps, mapDispatchToProps)(UsersListPage),
-  loadData: ({ dispatch }) => dispatch(fetchUsers()),
+  loadData: async ({ dispatch }) => {
+    await dispatch(dispatchSeo(seoMock))
+
+    return dispatch(requestUsers())
+  },
 }

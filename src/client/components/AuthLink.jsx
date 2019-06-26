@@ -14,7 +14,7 @@ const AuthLink = ({ auth }) => {
 }
 
 AuthLink.propTypes = {
-  auth: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
+  auth: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.bool]).isRequired,
 }
 
 export default AuthLink

@@ -1,19 +1,15 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import axios from 'axios'
 
-import env from './env'
+import axiosInstance from './axiosInstance'
 import reducers from '../../client/reducers'
 
 export default (req) => {
-  const axiosInstance = axios.create({
-    baseURL: env('API_BASE_URL'),
-    headers: {
-      cookie: req.get('cookie') || '',
-    },
+  const axios = axiosInstance({
+    cookie: req.get('cookie') || '',
   })
 
-  axiosInstance.interceptors.response.use(
+  axios.interceptors.response.use(
     response => response,
     error => Promise.resolve({ error, ...error.response })
   )
@@ -21,6 +17,6 @@ export default (req) => {
   return createStore(
     reducers,
     {},
-    applyMiddleware(thunk.withExtraArgument(axiosInstance))
+    applyMiddleware(thunk.withExtraArgument(axios))
   )
 }

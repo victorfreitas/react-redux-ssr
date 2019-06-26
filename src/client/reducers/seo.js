@@ -1,8 +1,8 @@
-import { FETCH_RESPONSE_ERROR } from '../action-types'
+import { SEO } from '../action-types'
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_RESPONSE_ERROR:
+    case SEO:
       return action.payload
 
     default:

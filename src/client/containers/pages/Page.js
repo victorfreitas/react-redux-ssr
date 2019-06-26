@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
-import { fetchCurrentUser } from '../../actions'
+import { requestCurrentUser } from '../../actions'
 import Page from '../../pages/Page'
 
-const mapStateToProps = null
+const mapStateToProps = ({ seo }) => ({ seo })
 
 export default {
   component: connect(mapStateToProps)(Page),
-  loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
+  loadData: ({ dispatch }) => dispatch(requestCurrentUser()),
 }
