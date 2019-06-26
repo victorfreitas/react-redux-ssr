@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const stylish = require('eslint/lib/cli-engine/formatters/stylish')
 
 const isDev = process.env.NODE_ENV !== 'production'
 const baseConfig = {
@@ -12,6 +13,17 @@ const baseConfig = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            formatter: stylish,
+          },
+        },
       },
     ],
   },
