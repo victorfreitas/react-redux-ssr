@@ -10,7 +10,7 @@ const proxyArgs = [
     proxyReqOptDecorator(opts) {
       const { headers } = opts
 
-      headers['x-forwarded-host'] = 'localhost:3000'
+      headers['x-forwarded-host'] = `${env.host}:${env.port}`
 
       return { ...opts, headers }
     },

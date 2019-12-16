@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 class AdminsListPage extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     const { dispatchSeo, seoMock, requestAdmins } = this.props
 
     dispatchSeo(seoMock)

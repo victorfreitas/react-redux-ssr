@@ -7,16 +7,15 @@ import Loader from '../Loader'
 
 export default (Component) => {
   const Auth = ({ auth }) => {
-    switch (auth) {
-      case false:
-        return <Redirect to="/" />
-
-      case 0:
-        return <Loader />
-
-      default:
-        return <Component />
+    if (typeof auth === 'object') {
+      return <Component />
     }
+
+    if (auth === 0) {
+      return <Loader />
+    }
+
+    return <Redirect to="/" />
   }
 
   Auth.propTypes = {

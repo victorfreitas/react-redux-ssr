@@ -8,6 +8,7 @@
     "semi": ["error", "never"],
     "react/jsx-one-expression-per-line": ["error", { "allow": "none" }],
     "import/no-unresolved": "error",
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
     "import/order": [
       "error",
       {

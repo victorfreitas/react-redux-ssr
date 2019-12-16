@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { renderRoutes } from 'react-router-config'
 import { Helmet } from 'react-helmet'
@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import Header from '../components/Header'
 
 const Page = ({ seo, route, location }) => (
-  <Fragment>
+  <>
     <Helmet>
       <title>
         {`${seo.title} | React SSR`}
@@ -18,7 +18,7 @@ const Page = ({ seo, route, location }) => (
     </Helmet>
     <Header />
     {renderRoutes(route.routes)}
-  </Fragment>
+  </>
 )
 
 Page.propTypes = {

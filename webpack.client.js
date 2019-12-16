@@ -1,12 +1,13 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 
 const withBaseConfig = require('./webpack.base')
 
 const isDev = process.env.NODE_ENV !== 'production'
-
 const plugins = [
   new MiniCssExtractPlugin({
     filename: 'css/style.css',
@@ -17,7 +18,6 @@ const plugins = [
     proxy: 'localhost:3000',
   }),
 ]
-
 const rules = [
   {
     test: /\.s?css$/,
@@ -35,14 +35,16 @@ const rules = [
         loader: 'sass-loader',
         options: {
           sourceMap: isDev,
-          importer: globImporter(),
+          sassOptions: {
+            importer: globImporter(),
+          },
         },
       },
     ],
   },
 ]
 
-const config = withBaseConfig({
+module.exports = withBaseConfig({
   target: 'web',
   entry: [
     'regenerator-runtime/runtime',
@@ -60,11 +62,20 @@ const config = withBaseConfig({
     splitChunks: {
       chunks: 'all',
     },
+    minimizer: [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: [
+            'default',
+            { discardComments: { removeAll: true } },
+          ],
+        },
+      }),
+    ],
   },
   plugins,
   module: {
     rules,
   },
 })
-
-module.exports = config

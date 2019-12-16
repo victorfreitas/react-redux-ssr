@@ -3,5 +3,5 @@ export default (routes, store) => {
     route.loadData && route.loadData(store)
   )
 
-  return routes.map(process).filter(v => Boolean(v))
+  return routes.map(process).filter(Boolean)
 }
