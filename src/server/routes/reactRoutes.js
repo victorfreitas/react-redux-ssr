@@ -6,7 +6,6 @@ import templateRoot from '../views/templateRoot'
 
 const router = express.Router()
 
-// eslint-disable-next-line consistent-return
 router.get('*', async (req, res) => {
   const store = createStore(req)
   const { promises, is404 } = processRoutes(req.path, store)
@@ -17,7 +16,8 @@ router.get('*', async (req, res) => {
   const content = templateRoot(req, store, context)
 
   if (context.url) {
-    return res.redirect(301, context.url)
+    res.redirect(301, context.url)
+    return
   }
 
   if (is404) {

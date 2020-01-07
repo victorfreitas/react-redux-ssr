@@ -7,14 +7,14 @@ import body from './body'
 
 export default (req, store, context) => {
   const content = renderToString(
-    <App req={req} store={store} context={context} />
+    <App item={{ req, store, context }} />
   )
 
   return `
     <!DOCTYPE html>
     <html>
-        ${head()}
-        ${body(content, store)}
+      ${head()}
+      ${body(content, store)}
     </html>
   `
 }

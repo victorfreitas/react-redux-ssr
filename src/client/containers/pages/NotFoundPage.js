@@ -9,10 +9,7 @@ const seoMock = {
 }
 
 const mapStateToProps = () => ({ seoMock })
-
-const mapDispatchToProps = {
-  dispatchSeo,
-}
+const mapDispatchToProps = { dispatchSeo }
 
 export default {
   component: connect(mapStateToProps, mapDispatchToProps)(NotFoundPage),
